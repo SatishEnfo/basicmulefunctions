@@ -10,6 +10,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<flow name="basicmulefunctionsFlow" doc:id="c126cbc0-d880-44b6-97ff-3bd4d38b4ebb" >
 		<http:listener doc:name="Listener" doc:id="d51fd3df-0c7e-4376-af48-30a922e70f9c" config-ref="HTTP_Listener_config" path="/receive"/>
 		<set-payload value="Message received and here is the response" doc:name="Set Payload" doc:id="9260a23c-e0b7-4489-8985-60fe9a9baafc" />
-		<logger level="INFO" doc:name="Logger" doc:id="eacc2ead-4795-4e35-b16f-a6425a95dee2" />
+		<logger level="INFO" doc:name="Logger" doc:id="eacc2ead-4795-4e35-b16f-a6425a95dee2" message="#[payload]"/>
 	</flow>
 </mule>
