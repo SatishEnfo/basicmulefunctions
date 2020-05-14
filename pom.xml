@@ -5,7 +5,7 @@
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>basicmulefunctions</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
 	<name>basicmulefunctions</name>
@@ -31,7 +31,7 @@
 			<plugin>
                 <groupId>org.mule.tools.maven</groupId>
                 <artifactId>mule-maven-plugin</artifactId>
-                <version>${mule.maven.plugin.version}</version>
+                <version>4.3</version>
                 <extensions>true</extensions>
                 <configuration>
                        <cloudHubDeployment>
