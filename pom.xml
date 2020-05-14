@@ -28,91 +28,29 @@
 				<configuration>
 				</configuration>
 			</plugin>
+			<plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                       <cloudHubDeployment>
+                              <uri>https://anypoint.mulesoft.com</uri>
+                              <muleVersion>${app.runtime}</muleVersion>
+                              <server>anypointPlatform</server>
+                              <applicationName>${artifactId}</applicationName>
+                              <environment>${cloud.env}</environment>
+                              <workerType>${cloudhub.workerType}</workerType>
+                             <properties>
+                                    <key>value</key>
+                             </properties>
+                       </cloudHubDeployment>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 	<!-- Different Profiles for each Environment -->
 
-<profiles>
-		<profile>
-			<id>Sandbox</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-deploy-plugin</artifactId>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.mule.tools.maven</groupId>
-						<artifactId>mule-maven-plugin</artifactId>
-						<version>${mule.maven.plugin.version}</version>
-						<configuration>
-							<deploymentType>cloudhub</deploymentType>
-							<muleVersion>${app.runtime}</muleVersion>
-							<username>${uid}</username>
-							<password>${pwd}</password>
-							<workerType>Micro</workerType>
-							<applicationName>${project.artifactId}-sandbox-trial</applicationName>
-							<redeploy>true</redeploy>
-							<environment>Sandbox</environment>
-							<properties>
-								<mule.env>${penv}</mule.env>
-								<display.message>${pdisp}</display.message>
-								<secure.properties>display.message</secure.properties>								
-							</properties>
-						</configuration>
-						<executions>
-							<execution>
-								<id>deploy</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.mule.tools.maven</groupId>
-						<artifactId>mule-app-maven-plugin</artifactId>
-						<version>${mule.tools.version}</version>
-						<extensions>true</extensions>
-						<configuration>
-							<copyToAppsDirectory>true</copyToAppsDirectory>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>build-helper-maven-plugin</artifactId>
-						<version>1.7</version>
-						<executions>
-							<execution>
-								<id>add-resource</id>
-								<phase>generate-resources</phase>
-								<goals>
-									<goal>add-resource</goal>
-								</goals>
-								<configuration>
-									<resources>
-										<resource>
-											<directory>src/main/app/</directory>
-										</resource>
-										<resource>
-											<directory>src/main/api/</directory>
-										</resource>
-										<resource>
-											<directory>mappings/</directory>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 	<dependencies>
         <dependency>
